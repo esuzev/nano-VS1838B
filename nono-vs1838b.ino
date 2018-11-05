@@ -154,7 +154,25 @@ const static unsigned char PROGMEM logoBmp[] =
 #define TONE_E TONE_Q/2   //eighth 1/8
 #define TONE_S TONE_Q/4 // sixteenth 1/16
 #define TONE_W 4*TONE_Q // whole 4/4
-
+/*
+00 FF 16 E9 
+00 FF 19 E6 
+00 FF 0D F2 
+00 FF 0C F3 
+00 FF 18 E7 
+00 FF 5E A1 
+00 FF 08 F7 
+00 FF 1C E3 
+00 FF 5A A5 
+00 FF 42 BD 
+00 FF 52 AD 
+00 FF 4A B5 
+00 FF 44 BB 
+00 FF 43 BC 
+00 FF 46 B9 
+00 FF 15 EA 
+00 FF 40 BF 
+*/
   
 void setup() {
   attachInterrupt(0,interrupt,CHANGE);
@@ -185,6 +203,8 @@ byte counter;
 bool flag;
 byte message[4];
 
+
+
 void loop() {
   long timer = micros() - time;
   if(flag){
@@ -206,14 +226,34 @@ void loop() {
   }
   if(counter >= 32){
     //Recieve 32 or more bits successfully
-    printBits();
-    delay(50);
+    switch(*(uint32_t*)message){
+//      case 0x00FF16E9:
+//00 FF 19 E6 
+      case 0xE916FF00:
+        tone(speakerPin,TONE_LA3,TONE_Q);
+        delay(1+TONE_Q);
+        break;
+      case 0xE619FF00:
+        tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+        delay(1+TONE_E+TONE_S);
+        break;
+      case 0xF20DFF00:
+        tone(speakerPin,TONE_C4,TONE_S);
+        delay(1+TONE_S);
+        break;
+      default:
+        printBits();
+        delay(50);
+        //Serial.println(*(uint32_t*)message);
+    }
+    
     sendCommand(message);
     clearBits();
   }
 
   if(timer > 10000 && counter > 0 && counter < 32){//10ms Timeout
-    Serial.println("Incomplete code");
+    Serial.print("Incomplete code counter: ");
+    Serial.println(counter);
     printBits();
     clearBits();
   }
@@ -240,10 +280,13 @@ void clearBits(){
 }
 
 void printBits(){
-  for(int i = 0; i < 4; i++){ byte low = message[i] & B00001111; byte high = (message[i] & B11110000) >> 4;
+//  for(int i = 0; i < 4; i++){
+  Serial.print("0x");
+  for(int i = 3; i >= 0; i--){
+    byte low = message[i] & B00001111;
+    byte high = (message[i] & B11110000) >> 4;
     Serial.print(high,HEX);
     Serial.print(low,HEX);
-    Serial.print(" ");
   }
   Serial.println();
 }

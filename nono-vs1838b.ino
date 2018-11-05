@@ -173,14 +173,6 @@ const static unsigned char PROGMEM logoBmp[] =
 00 FF 15 EA 
 00 FF 40 BF 
 */
-  
-void setup() {
-  attachInterrupt(0,interrupt,CHANGE);
-  pinMode(speakerPin,OUTPUT);  //Buzzer pin
-  pinMode(ikPin,INPUT);  //Buzzer pin
-  Serial.begin(9600);
-  Serial.println("Ready");
-}
 
 void play_music(){
   //tone(pin, note, duration)
@@ -194,7 +186,153 @@ void play_music(){
     delay(1+TONE_E+TONE_S);
     tone(speakerPin,TONE_C4,TONE_S);
     delay(1+TONE_S);
- 
+    
+    tone(speakerPin,TONE_LA3,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_H);
+    delay(1+TONE_H);
+    
+    tone(speakerPin,TONE_E4,TONE_Q); 
+    delay(1+TONE_Q); 
+    tone(speakerPin,TONE_E4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_E4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_F4,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_Ab3,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_H);
+    delay(1+TONE_H);
+    
+    tone(speakerPin,TONE_LA4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_LA3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_LA4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_Ab4,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_G4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_Gb4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_E4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_F4,TONE_E);
+    delay(1+TONE_E);
+    delay(1+TONE_E);//PAUTONE_SE
+    tone(speakerPin,TONE_Bb3,TONE_E);
+    delay(1+TONE_E);
+    tone(speakerPin,TONE_Eb4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_D4,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_Db4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_B3,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_E);
+    delay(1+TONE_E);
+    delay(1+TONE_E);//PAUTONE_SE TONE_QUATONE_SI FINE RIGA
+    tone(speakerPin,TONE_F3,TONE_E);
+    delay(1+TONE_E);
+    tone(speakerPin,TONE_Ab3,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_C4,TONE_Q);
+    delay(1+TONE_Q);
+     tone(speakerPin,TONE_LA3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_E4,TONE_H);
+    delay(1+TONE_H);
+    
+     tone(speakerPin,TONE_LA4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_LA3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_LA4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_Ab4,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_G4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_Gb4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_E4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_F4,TONE_E);
+    delay(1+TONE_E);
+    delay(1+TONE_E);//PAUTONE_SE
+    tone(speakerPin,TONE_Bb3,TONE_E);
+    delay(1+TONE_E);
+    tone(speakerPin,TONE_Eb4,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_D4,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_Db4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_B3,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_E);
+    delay(1+TONE_E);
+    delay(1+TONE_E);//PAUTONE_SE TONE_QUATONE_SI FINE RIGA
+    tone(speakerPin,TONE_F3,TONE_E);
+    delay(1+TONE_E);
+    tone(speakerPin,TONE_Ab3,TONE_Q);
+    delay(1+TONE_Q);
+    tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    
+    tone(speakerPin,TONE_LA3,TONE_Q);
+    delay(1+TONE_Q);
+     tone(speakerPin,TONE_F3,TONE_E+TONE_S);
+    delay(1+TONE_E+TONE_S);
+    tone(speakerPin,TONE_C4,TONE_S);
+    delay(1+TONE_S);
+    tone(speakerPin,TONE_LA3,TONE_H);
+    delay(1+TONE_H);
+    
+    delay(2*TONE_H);
+}
+  
+void setup() {
+  attachInterrupt(0,interrupt,CHANGE);
+  pinMode(speakerPin,OUTPUT);  //Buzzer pin
+  pinMode(ikPin,INPUT);  //Buzzer pin
+  Serial.begin(9600);
+  Serial.println("Ready");
 }
 
 //byte bosePwr[4]   = {0xBA, 0xA0, 0x4c, 0xb3};
@@ -240,6 +378,9 @@ void loop() {
       case 0xF20DFF00:
         tone(speakerPin,TONE_C4,TONE_S);
         delay(1+TONE_S);
+        break;
+      case 0xAD52FF00:
+        play_music();
         break;
       default:
         printBits();
